@@ -1,0 +1,33 @@
+name: Scraper Schedule
+
+on:
+  schedule:
+    - cron: "*/5 * * * *"  # toutes les 5 minutes
+  workflow_dispatch:       # permet un déclenchement manuel
+
+jobs:
+  run-scraper:
+    runs-on: ubuntu-latest  # environnement Linux fourni par GitHub
+
+    steps:
+      # 1️⃣ récupérer le code
+      - uses: actions/checkout@v4
+
+      # 2️⃣ installer Python
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      # 3️⃣ installer les dépendances
+      - name: Install dependencies
+        run: |
+          pip install playwright supabase
+          playwright install
+
+      # 4️⃣ exécuter ton scraper
+      - name: Run scraper
+        run: python Bourse.py
+        env:
+          SUPABASE_URL: ${{ https://kkrqplfigheoeeqlijll.supabase.co }}
+          SUPABASE_KEY: ${{ sb_publishable_-cqZI7-LvSmboM37s2g6zA_8vqnBoOW }}
