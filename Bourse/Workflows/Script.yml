@@ -22,4 +22,4 @@ jobs:
 
       # 3️⃣ Lancer ton script
       - name: Run script
-        run: python script.py
+        run: python Bourse.py
