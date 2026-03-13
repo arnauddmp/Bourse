@@ -1,0 +1,25 @@
+name: Run Python Script
+
+# Déclencheurs : manuel ou à chaque push
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:  # permet de lancer manuellement
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1️⃣ Récupérer le code du dépôt
+      - uses: actions/checkout@v4
+
+      # 2️⃣ Installer Python
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      # 3️⃣ Lancer ton script
+      - name: Run script
+        run: python Bourse.py
