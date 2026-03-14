@@ -20,7 +20,7 @@ with sync_playwright() as p:
     page.goto(site_url)
     print("allé sur le site")
     print(page.locator("div.YMlKec fxKbKc").count())
-    text = page.locator("YMlKec fxKbKc").text_content()
+    text = page.locator("YMlKec.fxKbKc").text_content()
     #valeur = page.locator("div.YMlKec fxKbKc").text_content()
     print(text)
     browser.close()
