@@ -4,6 +4,7 @@ from datetime import datetime
 import os
 
 
+
 print("imports ok")
 
 # Nom et URL du site à scraper
@@ -19,8 +20,9 @@ with sync_playwright() as p:
     page.goto(site_url)
     print("allé sur le site")
     print(page.locator("div.YMlKec fxKbKc").count())
-    valeur = page.locator("div.YMlKec fxKbKc").text_content()
-    print(valeur)
+    text = page.locator("YMlKec fxKbKc").text_content()
+    #valeur = page.locator("div.YMlKec fxKbKc").text_content()
+    print(text)
     browser.close()
     print("browser fermé")
 
