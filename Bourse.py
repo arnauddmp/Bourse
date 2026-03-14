@@ -3,11 +3,12 @@ from supabase import create_client, Client
 from datetime import datetime
 import os
 
+
 print("imports ok")
 
 # Nom et URL du site à scraper
-site_name = "apple"
-site_url = "https://www.apple.com"
+site_name = "Stellantis"
+site_url = "https://www.google.com/finance/quote/STLAP:EPA?sa=X&ved=2ahUKEwjQyNH56p6TAxU7UaQEHTLqDhIQ3ecFKAN6BAgvEAQ"
 
 # Scraping Playwright
 with sync_playwright() as p:
@@ -17,17 +18,15 @@ with sync_playwright() as p:
     print("onglet ouvert")
     page.goto(site_url)
     print("allé sur le site")
-    title = page.title()
-    print("get title")
+    valeur = page.locator("div.YMlKec fxKbKc").text_content()
+    print(valeur)
     browser.close()
     print("browser fermé")
 
-print("Titre récupéré :", title)
 
 # Préparer les données à insérer
 data = {
     "site": site_name,
-    "title": title,
     "last_update": datetime.now().isoformat()
 }
 
