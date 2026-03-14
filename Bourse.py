@@ -18,6 +18,7 @@ with sync_playwright() as p:
     print("onglet ouvert")
     page.goto(site_url)
     print("allé sur le site")
+    print(page.locator("div.YMlKec fxKbKc").count())
     valeur = page.locator("div.YMlKec fxKbKc").text_content()
     print(valeur)
     browser.close()
